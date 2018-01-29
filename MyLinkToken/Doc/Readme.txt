@@ -28,5 +28,5 @@ http://www.wankeyun.cc
 
 QQ号: 1299071860
 QQ群：
-迅雷养鸽技术群：646128 （点击链接加入群【迅雷养鸽技术群】：https://jq.qq.com/?_wv=1027&k=5zFKOru）
+迅雷养鸽技术群(2000人大群)：646128 （点击链接加入群【迅雷养鸽技术群】：https://jq.qq.com/?_wv=1027&k=5zFKOru）
 MyLinkToken用户交流①：150090828 （点击链接加入群【MyLinkToken用户交流①】：https://jq.qq.com/?_wv=1027&k=5Xfxq3Y）

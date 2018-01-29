@@ -1,4 +1,5 @@
-﻿using Nethereum.Web3;
+﻿using MyLinkToken.WinFormEx;
+using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace MyLinkToken
             }
             if(account == null)
             {
-                MessageBox.Show("密码错误！");
+                EasyMsg.ShowTips("密码错误！");
                 return;
             }
             var nonce = LinkClass.TransactionEx.GetTransactionCount(from_address);

@@ -99,13 +99,13 @@ namespace MyLinkToken.WinFormEx
             switch (mt)
             {
                 case MsgType.Info:
-                    frm.labelText = "提示：\r\n" + msg;
+                    frm.labelText = "提示：\r\n\r\n" + msg;
                     break;
                 case MsgType.Warn:
-                    frm.labelText = "警告：\r\n" + msg;
+                    frm.labelText = "警告：\r\n\r\n" + msg;
                     break;
                 case MsgType.Error:
-                    frm.labelText = "错误：\r\n" + msg;
+                    frm.labelText = "错误：\r\n\r\n" + msg;
                     break;
                 default:
                     break;

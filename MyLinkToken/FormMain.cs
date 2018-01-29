@@ -30,7 +30,7 @@ namespace MyLinkToken
             WinFormEx.SplashForm.ChangeProgressText("加载链克口袋文件...");
             Thread.Sleep(400);
             WinFormEx.SplashForm.ChangeProgressText("更新余额信息......");
-            Thread.Sleep(350);//只少要有一个延迟的，否则加载窗体可能无法关闭或加载文本设置会出错
+            Thread.Sleep(150);//只少要有一个延迟的，否则加载窗体可能无法关闭或加载文本设置会出错
             //WinFormEx.SplashForm.Close();
         }
 
@@ -88,6 +88,7 @@ namespace MyLinkToken
                         sw.Write(str);
                         sw.Close();
                         BindAccount();
+                        LogMessage("导入账户 " + address + " 成功！");
                     }
                 }
                 catch (Exception ex)
@@ -133,17 +134,25 @@ namespace MyLinkToken
                 var path = Application.StartupPath + "\\KeyStore\\" + address;
                 File.Delete(path);
                 BindAccount();
+                LogMessage("删除账户 " + address + " 成功！");
             }
             else
             {
-                //MessageBox.Show("请选中一个链克口袋！");
-                EasyMsg.ShowMsg("请选中一个链克口袋！", MsgType.Info);
+                EasyMsg.ShowTips("请选中一个链克口袋！");
             }
            
         }
 
         private void listBoxAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(listBoxAccount.Items.Count == 0)
+            {
+                lbMoney.Text = "";
+                lbAddress.Text = "";
+                txtToAddress.Clear();
+                txtToNum.Clear();
+                return;
+            }
             var address = listBoxAccount.SelectedItem.ToString();
             lbMoney.Text = LinkClass.TransactionEx.GetBalance(address).ToString();
             lbAddress.Text = address;
@@ -157,15 +166,14 @@ namespace MyLinkToken
             var to_address = txtToAddress.Text.Trim();
             if(!(to_address.Length == 42 && to_address.IndexOf("0x") == 0))
             {
-                //MessageBox.Show("请输入合法的转入账户地址！");
-                EasyMsg.ShowMsg("请输入合法的转入账户地址！", MsgType.Info);
+                EasyMsg.ShowTips("请输入合法的转入账户地址！");
                 return;
             }
             var to_num = decimal.Parse(txtToNum.Text.Trim());
             var money = decimal.Parse(lbMoney.Text.Trim());
             if (to_num > money)
             {
-                MessageBox.Show("余额不足！");
+                EasyMsg.ShowTips("余额不足！");
                 return;
             }
             LogMessage("您发起了一个转赠请求!\r\n接收地址：" + to_address + "\r\n转赠数量：" + to_num);

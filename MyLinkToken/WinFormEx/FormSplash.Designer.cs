@@ -40,6 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(52, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(305, 12);
@@ -50,6 +51,7 @@
             // 
             this.lbProgress.AutoSize = true;
             this.lbProgress.BackColor = System.Drawing.Color.Transparent;
+            this.lbProgress.ForeColor = System.Drawing.Color.White;
             this.lbProgress.Location = new System.Drawing.Point(38, 96);
             this.lbProgress.Name = "lbProgress";
             this.lbProgress.Size = new System.Drawing.Size(71, 12);
@@ -61,6 +63,7 @@
             this.lbAppName.AutoSize = true;
             this.lbAppName.BackColor = System.Drawing.Color.Transparent;
             this.lbAppName.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbAppName.ForeColor = System.Drawing.Color.White;
             this.lbAppName.Location = new System.Drawing.Point(35, 32);
             this.lbAppName.Name = "lbAppName";
             this.lbAppName.Size = new System.Drawing.Size(268, 25);
@@ -81,6 +84,7 @@
             // 
             this.lbTick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTick.BackColor = System.Drawing.Color.Transparent;
+            this.lbTick.ForeColor = System.Drawing.Color.White;
             this.lbTick.Location = new System.Drawing.Point(178, 122);
             this.lbTick.Name = "lbTick";
             this.lbTick.Size = new System.Drawing.Size(165, 12);
