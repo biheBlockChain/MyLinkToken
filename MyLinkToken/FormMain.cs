@@ -133,7 +133,7 @@ namespace MyLinkToken
                 listBoxAccount.Items.RemoveAt(a);
                 var path = Application.StartupPath + "\\KeyStore\\" + address;
                 File.Delete(path);
-                BindAccount();
+                //BindAccount();
                 LogMessage("删除账户 " + address + " 成功！");
             }
             else
@@ -145,7 +145,9 @@ namespace MyLinkToken
 
         private void listBoxAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBoxAccount.Items.Count == 0)
+            var a = listBoxAccount.Items.Count;
+            var s = listBoxAccount.SelectedIndex;
+            if (a == 0 || s < 0)
             {
                 lbMoney.Text = "";
                 lbAddress.Text = "";
@@ -236,5 +238,10 @@ namespace MyLinkToken
             }
         }
         #endregion
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.wankeyun.cc");
+        }
     }
 }
