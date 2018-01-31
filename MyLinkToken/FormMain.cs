@@ -36,6 +36,7 @@ namespace MyLinkToken
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            this.Text = "MyLinkToken - 开源链克口袋   V" + Application.ProductVersion;
             BindAccount();
             WinFormEx.AnimateWindows.ShowAnimateWindow(this, 500, WinFormEx.AnimateWindows.AW_BLEND);//淡入淡出的效果在不影藏边框时也不错
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;

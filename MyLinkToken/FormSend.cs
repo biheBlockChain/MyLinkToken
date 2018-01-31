@@ -26,6 +26,7 @@ namespace MyLinkToken
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             var password = txtPassword.Text.Trim();
             var keyFile = Application.StartupPath + "\\KeyStore\\" + from_address;
             Account account;
