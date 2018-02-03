@@ -126,13 +126,21 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPassword.Designer.cs">
+      <DependentUpon>FormPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSend.Designer.cs">
       <DependentUpon>FormSend.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinkClass\KeyStoreEx.cs" />
     <Compile Include="LinkClass\TransactionEx.cs" />
+    <Compile Include="LinkClass\TransactionRecordsModel.cs" />
     <Compile Include="WinFormEx\FormSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +176,7 @@
     <Content Include="Doc\Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LinkClass\template.html" />
     <Content Include="logo_ico.ico" />
     <None Include="Resources\backgroud.png" />
     <Content Include="Resources\dialog-error-5.png" />
@@ -182,6 +191,9 @@
     <None Include="Resources\InstallProgress.gif" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPassword.resx">
+      <DependentUpon>FormPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSend.resx">
       <DependentUpon>FormSend.cs</DependentUpon>

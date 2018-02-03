@@ -41,15 +41,29 @@ namespace MyLinkToken
             if(account == null)
             {
                 EasyMsg.ShowTips("密码错误！");
+                this.Enabled = true;
                 return;
             }
             var nonce = LinkClass.TransactionEx.GetTransactionCount(from_address);
             var sing = LinkClass.TransactionEx.SignTransaction(account.PrivateKey, to_address, decimal.Parse(to_num), nonce);
             var msg = LinkClass.TransactionEx.SendRawTransaction(sing);
+            if (string.IsNullOrEmpty(msg))
+            {
+                EasyMsg.ShowTips("外面的世界更精彩，稍后再来看看！");
+                this.Enabled = true;
+                return;
+            }
             if (msg.IndexOf("0x") == 0)
-                LogMessage("转赠成功！\r\nhash值：" + msg); 
+            {
+                LogMessage("转赠成功！\r\nhash值：" + msg);
+                SyncMoney(lbAllMoney.Text);
+            }
             else
-                LogError("转赠失败：" + msg);
+            {
+                EasyMsg.ShowTips("转赠失败：" + msg);
+                this.Enabled = true;
+                return;
+            }  
             this.Close();
         }
 
@@ -66,6 +80,11 @@ namespace MyLinkToken
             lbTo.Text = string.Format("接收账户：{0}", to_address);
         }
 
+        private void SyncMoney(string sendNum)
+        {
+            FormMain main = (FormMain)this.Owner;
+            main.SyncMoney(sendNum);
+        }
         private void LogError(string msg)
         {
             FormMain main = (FormMain)this.Owner;

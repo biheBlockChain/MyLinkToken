@@ -16,6 +16,7 @@ using RestSharp.Deserializers;
 using System.IO;
 using System.Text.RegularExpressions;
 using MyLinkToken.WinFormEx;
+using MyLinkToken.LinkClass;
 
 namespace MyLinkToken
 {
@@ -94,7 +95,7 @@ namespace MyLinkToken
                 }
                 catch (Exception ex)
                 {
-                    
+                    EasyMsg.ShowTips("导入账户失败！");
                 }
             }
         }
@@ -146,6 +147,7 @@ namespace MyLinkToken
 
         private void listBoxAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.Enabled = false;
             var a = listBoxAccount.Items.Count;
             var s = listBoxAccount.SelectedIndex;
             if (a == 0 || s < 0)
@@ -154,6 +156,7 @@ namespace MyLinkToken
                 lbAddress.Text = "";
                 txtToAddress.Clear();
                 txtToNum.Clear();
+                this.Enabled = true;
                 return;
             }
             var address = listBoxAccount.SelectedItem.ToString();
@@ -161,6 +164,7 @@ namespace MyLinkToken
             lbAddress.Text = address;
             txtToAddress.Clear();
             txtToNum.Clear();
+            this.Enabled = true;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -243,6 +247,32 @@ namespace MyLinkToken
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://www.wankeyun.cc");
+        }
+
+        public void SyncMoney(string sendNum)
+        {
+            var money = decimal.Parse(lbMoney.Text);
+            var send = decimal.Parse(sendNum);
+            lbMoney.Text = (money - send).ToString();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            FormPassword pwd = new FormPassword();
+            pwd.ShowDialog(this);
+        }
+
+        public void AddNewAccount(string address)
+        {
+            listBoxAccount.Items.Add(address);
+            LogMessage("新建链克账户成功，地址：" + address);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var address = txtAddresSearch.Text.Trim();
+            var html = TransactionEx.GetTransactionRecords(address);
+            webBrowser1.DocumentText = html;
         }
     }
 }
