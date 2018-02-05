@@ -2,11 +2,14 @@
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Numerics;
+using System.Text;
 
 namespace MyLinkToken.LinkClass
 {
@@ -116,6 +119,11 @@ namespace MyLinkToken.LinkClass
         public static string SendRawTransaction(string signTransaction)
         {
             var client = GetDefaultClient();
+            var proxy = new WebProxy("103.73.161.187", 1118);
+            var cre = new NetworkCredential("MyLinkToken", "MyLinkToken123");
+            client.Timeout = 5000;
+            proxy.Credentials = cre;
+            client.Proxy = proxy;
             client.AddDefaultHeader("Nc", "IN");
             var request = GetDefaultRequest();
             //request.AddHeader("Nc", "IN");
@@ -130,6 +138,10 @@ namespace MyLinkToken.LinkClass
             request.AddJsonBody(postData);
             var response = client.Execute(request);
             var content = response.Content;
+            if (string.IsNullOrEmpty(content))
+            {
+                return "";
+            }
             var resultJson = JsonConvert.DeserializeObject<dynamic>(content);
             string txHash = resultJson.result;//交易成功后的hash
             if (string.IsNullOrEmpty(txHash))
@@ -141,6 +153,107 @@ namespace MyLinkToken.LinkClass
             {
                 return txHash;
             }
+        }
+
+        public static string GetTransactionRecords(string address)
+        {
+            var client = GetDefaultClient();
+            var request = GetDefaultRequest();
+            client.BaseUrl = new Uri(@"https://walletapi.onethingpcs.com/getTransactionRecords");
+            var postData = new List<string> { address, "0", "0", "1", "20" };
+            request.AddJsonBody(postData);
+            var response = client.Execute(request);
+            var content = response.Content;
+            JArray jarray = JsonConvert.DeserializeObject<dynamic>(content).result;
+            //var recordsAarray = Newtonsoft.Json.Linq.JArray.Parse(content);
+            List<TransactionRecordsModel> recordsModels = jarray.ToObject<List<TransactionRecordsModel>>();
+
+            //组装html文件
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<html class=\"\" xmlns=\"http://www.w3.org/1999/xhtml\">");
+            sb.Append("<head>");
+            sb.Append("<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
+            sb.Append("<title>交易记录</title>");
+            sb.Append("<style type=\"text/css\">");
+            sb.Append(".table-00 {");
+            sb.Append("width: 100%;");
+            sb.Append("background: #D6E0EF;");
+            sb.Append("border: 1px solid #698CC3;");
+            sb.Append("word-break: break-all;");
+            sb.Append("overflow: auto;");
+            sb.Append("margin: 0 auto;");
+            sb.Append("}");
+            sb.Append(".td-00 {");
+            sb.Append("font: 9pt Tahoma, Verdana;");
+            sb.Append("color: #FFFFFF;");
+            sb.Append("font-weight: bold;");
+            sb.Append("background-color: #698CC3;");
+            sb.Append("height: 25px;");
+            sb.Append("padding-left: 5px;");
+            sb.Append("word-break: break-all;");
+            sb.Append("overflow: auto;");
+            sb.Append("}");
+            sb.Append(".td-01 {");
+            sb.Append("background-color: #EAEFF2;");
+            sb.Append("font-family: \"Arial\" , \"宋体\" , \"新宋体\";");
+            sb.Append("font-size: 9pt;");
+            sb.Append("color: #000000;");
+            sb.Append("padding-left: 5px;");
+            sb.Append("height: 25px;");
+            sb.Append("word-break: break-all;");
+            sb.Append("overflow: auto;");
+            sb.Append("}");
+            sb.Append(".td-02 {");
+            sb.Append("background-color: #FFFFFF;");
+            sb.Append("font-family: \"Arial\" , \"宋体\" , \"新宋体\";");
+            sb.Append("font-size: 9pt;");
+            sb.Append("color: #000000;");
+            sb.Append("padding-left: 5px;");
+            sb.Append("height: 25px;");
+            sb.Append("word-break: break-all;");
+            sb.Append("overflow: auto;");
+            sb.Append("}");
+            sb.Append("</style>");
+            sb.Append("</head>");
+            sb.Append("<body>");
+            sb.Append("<div>");
+            sb.Append("<table class=\"Table-00\" cellpadding=\"0\" cellspacing=\"1\">");
+            sb.Append("<tbody>");
+            int a = recordsModels.Count;
+            var rowStyle = "";
+            for (int i = 0; i < a; i++)
+            {
+                TransactionRecordsModel model = recordsModels[i];
+                if (i % 2 == 0)
+                    rowStyle = "td-02";
+                else
+                    rowStyle = "td-01";
+                rowStyle = "td-02";//交叉显示效果不好
+                sb.Append("<tr><td colspan=\"3\" class=\"td-00\">哈希：" + model.hash + "</td></tr>");
+                sb.Append("<tr>");
+                long unixTimeStamp = long.Parse(model.timestamp);
+                System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+                DateTime dt = startTime.AddSeconds(unixTimeStamp);
+                sb.Append("<td class=" + rowStyle + " width=\"180px\">时间："+ dt.ToString("yyyy-MM-dd HH:mm:ss") + "</td>");
+                sb.Append("<td class=" + rowStyle + " width=\"350px\">账户：" + model.tradeAccount + "</td>");
+                sb.Append("<td class=" + rowStyle + ">");
+                int type = model.type;
+                if (type == 0)
+                    sb.Append("<a style=\"color:red\">支出：</a>");
+                else
+                    sb.Append("<a style=\"color:green\">收入：</a>");
+                HexBigInteger money_bigint = new HexBigInteger(model.amount);
+                decimal money = Nethereum.Util.UnitConversion.Convert.FromWei(money_bigint.Value);
+                sb.Append(money.ToString());
+                sb.Append("</td>");
+                sb.Append("</tr>");
+            }
+            sb.Append("</tbody>");
+            sb.Append("</table>");
+            sb.Append("</div>");
+            sb.Append("</body>");
+            sb.Append("</html>");
+            return sb.ToString();
         }
     }
 }
