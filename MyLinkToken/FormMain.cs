@@ -47,7 +47,7 @@ namespace MyLinkToken
             listBoxAccount.DrawItem += ListBoxAccount_DrawItem;
 
             this.TopLevel = true;
-            LogMessage("欢迎使用 MyLinkToken - 开源链克口袋  玩客社区首发：wankeyun.cc");
+            LogMessage("欢迎使用 MyLinkToken - 开源链克口袋\r\n玩客社区首发：wankeyun.cc");
         }
 
         private void ListBoxAccount_DrawItem(object sender, DrawItemEventArgs e)
@@ -90,7 +90,7 @@ namespace MyLinkToken
                         sw.Write(str);
                         sw.Close();
                         BindAccount();
-                        LogMessage("导入账户 " + address + " 成功！");
+                        LogMessage("导入账户成功：\r\n" + address);
                     }
                 }
                 catch (Exception ex)
@@ -115,9 +115,6 @@ namespace MyLinkToken
             if (listBoxAccount.Items.Count > 0)
             {
                 listBoxAccount.SelectedIndex = 0;
-                var address = listBoxAccount.SelectedItem.ToString();
-                lbMoney.Text = LinkClass.TransactionEx.GetBalance(address).ToString();
-                lbAddress.Text = address;
             }
         }
 
@@ -136,7 +133,7 @@ namespace MyLinkToken
                 var path = Application.StartupPath + "\\KeyStore\\" + address;
                 File.Delete(path);
                 //BindAccount();
-                LogMessage("删除账户 " + address + " 成功！");
+                LogMessage("删除账户成功：\r\n" + address);
             }
             else
             {
@@ -153,6 +150,7 @@ namespace MyLinkToken
             if (a == 0 || s < 0)
             {
                 lbMoney.Text = "";
+                lbRename.Text = "";
                 lbAddress.Text = "";
                 txtToAddress.Clear();
                 txtToNum.Clear();
@@ -161,6 +159,9 @@ namespace MyLinkToken
             }
             var address = listBoxAccount.SelectedItem.ToString();
             lbMoney.Text = LinkClass.TransactionEx.GetBalance(address).ToString();
+            var ini = new iHomeSoft.Helper.FileHandle.IniHelper(Application.StartupPath + "\\rename.ini");
+            var rename = ini.getKeyValue("账户别名", address);
+            lbRename.Text = rename;
             lbAddress.Text = address;
             txtToAddress.Clear();
             txtToNum.Clear();
@@ -265,7 +266,7 @@ namespace MyLinkToken
         public void AddNewAccount(string address)
         {
             listBoxAccount.Items.Add(address);
-            LogMessage("新建链克账户成功，地址：" + address);
+            LogMessage("新建账户成功：\r\n" + address);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -273,6 +274,42 @@ namespace MyLinkToken
             var address = txtAddresSearch.Text.Trim();
             var html = TransactionEx.GetTransactionRecords(address);
             webBrowser1.DocumentText = html;
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            var address = lbAddress.Text.Trim();
+            Clipboard.SetDataObject(address);
+            LogMessage("链克地址已复制到剪贴板：\r\n" + address);
+        }
+
+        private void btnQRCode_Click(object sender, EventArgs e)
+        {
+            FormQRCode qr = new FormQRCode();
+            qr.address = lbAddress.Text.Trim();
+            qr.ShowDialog(this);
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            var money = decimal.Parse(lbMoney.Text.Trim());
+            var sendAll = money - 0.01m;
+            txtToNum.Text = sendAll.ToString();
+        }
+
+        private void btnRename_Click(object sender, EventArgs e)
+        {
+            FormRename re = new FormRename();
+            re.rename = lbRename.Text.Trim();
+            re.ShowDialog(this);
+        }
+
+        public void Rename(string rename)
+        {
+            var address = lbAddress.Text.Trim();
+            lbRename.Text = rename;
+            var ini = new iHomeSoft.Helper.FileHandle.IniHelper(Application.StartupPath + "\\rename.ini");
+            ini.setKeyValue("账户别名", address, rename);
         }
     }
 }

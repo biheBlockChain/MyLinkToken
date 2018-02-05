@@ -36,6 +36,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRename = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.btnCopy = new System.Windows.Forms.Button();
+            this.btnQRCode = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.txtToNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,10 +55,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtAddresSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.lbRename = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -70,16 +76,16 @@
             this.listBoxAccount.ItemHeight = 15;
             this.listBoxAccount.Items.AddRange(new object[] {
             "0"});
-            this.listBoxAccount.Location = new System.Drawing.Point(6, 19);
+            this.listBoxAccount.Location = new System.Drawing.Point(5, 19);
             this.listBoxAccount.Name = "listBoxAccount";
-            this.listBoxAccount.Size = new System.Drawing.Size(363, 319);
+            this.listBoxAccount.Size = new System.Drawing.Size(345, 319);
             this.listBoxAccount.TabIndex = 1;
             this.listBoxAccount.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBoxAccount_MeasureItem);
             this.listBoxAccount.SelectedIndexChanged += new System.EventHandler(this.listBoxAccount_SelectedIndexChanged);
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(114, 343);
+            this.btnImport.Location = new System.Drawing.Point(95, 343);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 35);
             this.btnImport.TabIndex = 2;
@@ -89,7 +95,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(204, 343);
+            this.btnExport.Location = new System.Drawing.Point(185, 343);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 35);
             this.btnExport.TabIndex = 4;
@@ -99,7 +105,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(294, 343);
+            this.btnDelete.Location = new System.Drawing.Point(275, 343);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 35);
             this.btnDelete.TabIndex = 5;
@@ -115,16 +121,16 @@
             this.groupBox1.Controls.Add(this.btnImport);
             this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Font = new System.Drawing.Font("宋体", 11F);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(5, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 384);
+            this.groupBox1.Size = new System.Drawing.Size(355, 384);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "口袋管理：";
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(24, 343);
+            this.btnNew.Location = new System.Drawing.Point(5, 343);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 35);
             this.btnNew.TabIndex = 6;
@@ -134,6 +140,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbRename);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.btnRename);
+            this.groupBox2.Controls.Add(this.btnAll);
+            this.groupBox2.Controls.Add(this.btnCopy);
+            this.groupBox2.Controls.Add(this.btnQRCode);
             this.groupBox2.Controls.Add(this.btnSend);
             this.groupBox2.Controls.Add(this.txtToNum);
             this.groupBox2.Controls.Add(this.label5);
@@ -144,16 +156,72 @@
             this.groupBox2.Controls.Add(this.lbMoney);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("宋体", 11F);
-            this.groupBox2.Location = new System.Drawing.Point(388, 6);
+            this.groupBox2.Location = new System.Drawing.Point(364, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(461, 183);
+            this.groupBox2.Size = new System.Drawing.Size(490, 183);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "转赠操作";
+            this.groupBox2.Text = "链克转赠";
+            // 
+            // btnRename
+            // 
+            this.btnRename.BackgroundImage = global::MyLinkToken.Properties.Resources.Edit_Property_48px;
+            this.btnRename.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRename.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRename.FlatAppearance.BorderSize = 0;
+            this.btnRename.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRename.Location = new System.Drawing.Point(463, 19);
+            this.btnRename.Name = "btnRename";
+            this.btnRename.Size = new System.Drawing.Size(22, 22);
+            this.btnRename.TabIndex = 12;
+            this.btnRename.UseVisualStyleBackColor = true;
+            this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
+            // 
+            // btnAll
+            // 
+            this.btnAll.BackgroundImage = global::MyLinkToken.Properties.Resources.AllIn_48px;
+            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAll.FlatAppearance.BorderSize = 0;
+            this.btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAll.Location = new System.Drawing.Point(463, 110);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(22, 22);
+            this.btnAll.TabIndex = 11;
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.BackgroundImage = global::MyLinkToken.Properties.Resources.Copy_48px;
+            this.btnCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCopy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopy.FlatAppearance.BorderSize = 0;
+            this.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopy.Location = new System.Drawing.Point(440, 50);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(22, 22);
+            this.btnCopy.TabIndex = 10;
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // btnQRCode
+            // 
+            this.btnQRCode.BackgroundImage = global::MyLinkToken.Properties.Resources.QR_Code_48px;
+            this.btnQRCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQRCode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQRCode.FlatAppearance.BorderSize = 0;
+            this.btnQRCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQRCode.Location = new System.Drawing.Point(463, 50);
+            this.btnQRCode.Name = "btnQRCode";
+            this.btnQRCode.Size = new System.Drawing.Size(22, 22);
+            this.btnQRCode.TabIndex = 9;
+            this.btnQRCode.UseVisualStyleBackColor = true;
+            this.btnQRCode.Click += new System.EventHandler(this.btnQRCode_Click);
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(18, 142);
+            this.btnSend.Location = new System.Drawing.Point(5, 142);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 35);
             this.btnSend.TabIndex = 8;
@@ -163,9 +231,9 @@
             // 
             // txtToNum
             // 
-            this.txtToNum.Location = new System.Drawing.Point(103, 110);
+            this.txtToNum.Location = new System.Drawing.Point(74, 110);
             this.txtToNum.Name = "txtToNum";
-            this.txtToNum.Size = new System.Drawing.Size(352, 24);
+            this.txtToNum.Size = new System.Drawing.Size(385, 24);
             this.txtToNum.TabIndex = 7;
             this.txtToNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToNum_KeyPress);
             this.txtToNum.Validating += new System.ComponentModel.CancelEventHandler(this.txtToNum_Validating);
@@ -173,7 +241,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 113);
+            this.label5.Location = new System.Drawing.Point(2, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 15);
             this.label5.TabIndex = 6;
@@ -181,15 +249,15 @@
             // 
             // txtToAddress
             // 
-            this.txtToAddress.Location = new System.Drawing.Point(103, 80);
+            this.txtToAddress.Location = new System.Drawing.Point(74, 80);
             this.txtToAddress.Name = "txtToAddress";
-            this.txtToAddress.Size = new System.Drawing.Size(352, 24);
+            this.txtToAddress.Size = new System.Drawing.Size(411, 24);
             this.txtToAddress.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 83);
+            this.label6.Location = new System.Drawing.Point(2, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 15);
             this.label6.TabIndex = 4;
@@ -198,7 +266,7 @@
             // lbAddress
             // 
             this.lbAddress.AutoSize = true;
-            this.lbAddress.Location = new System.Drawing.Point(103, 53);
+            this.lbAddress.Location = new System.Drawing.Point(74, 53);
             this.lbAddress.Name = "lbAddress";
             this.lbAddress.Size = new System.Drawing.Size(15, 15);
             this.lbAddress.TabIndex = 3;
@@ -207,7 +275,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 53);
+            this.label4.Location = new System.Drawing.Point(2, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 15);
             this.label4.TabIndex = 2;
@@ -216,7 +284,7 @@
             // lbMoney
             // 
             this.lbMoney.AutoSize = true;
-            this.lbMoney.Location = new System.Drawing.Point(103, 23);
+            this.lbMoney.Location = new System.Drawing.Point(74, 23);
             this.lbMoney.Name = "lbMoney";
             this.lbMoney.Size = new System.Drawing.Size(15, 15);
             this.lbMoney.TabIndex = 1;
@@ -225,7 +293,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 23);
+            this.label1.Location = new System.Drawing.Point(2, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 0;
@@ -235,9 +303,9 @@
             // 
             this.groupBox3.Controls.Add(this.richTextBox1);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 11F);
-            this.groupBox3.Location = new System.Drawing.Point(388, 195);
+            this.groupBox3.Location = new System.Drawing.Point(364, 195);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(461, 195);
+            this.groupBox3.Size = new System.Drawing.Size(490, 195);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "操作日志";
@@ -247,7 +315,7 @@
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(3, 20);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(455, 172);
+            this.richTextBox1.Size = new System.Drawing.Size(484, 172);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -265,6 +333,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(1, 1);
@@ -300,6 +371,26 @@
             this.tabPage2.Text = "区块链查询";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(3, 33);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(850, 360);
+            this.webBrowser1.TabIndex = 9;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(480, 10);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 8;
+            this.btnSearch.Text = "查 询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // txtAddresSearch
             // 
             this.txtAddresSearch.Location = new System.Drawing.Point(113, 12);
@@ -317,25 +408,23 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "链克地址：";
             // 
-            // btnSearch
+            // lbRename
             // 
-            this.btnSearch.Location = new System.Drawing.Point(480, 10);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 8;
-            this.btnSearch.Text = "查 询";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.lbRename.AutoSize = true;
+            this.lbRename.Location = new System.Drawing.Point(328, 23);
+            this.lbRename.Name = "lbRename";
+            this.lbRename.Size = new System.Drawing.Size(15, 15);
+            this.lbRename.TabIndex = 14;
+            this.lbRename.Text = "0";
             // 
-            // webBrowser1
+            // label7
             // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(3, 33);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(850, 360);
-            this.webBrowser1.TabIndex = 9;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(256, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 15);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "账户别名：";
             // 
             // FormMain
             // 
@@ -392,5 +481,11 @@
         private System.Windows.Forms.TextBox txtAddresSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button btnQRCode;
+        private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.Button btnAll;
+        private System.Windows.Forms.Button btnRename;
+        private System.Windows.Forms.Label lbRename;
+        private System.Windows.Forms.Label label7;
     }
 }

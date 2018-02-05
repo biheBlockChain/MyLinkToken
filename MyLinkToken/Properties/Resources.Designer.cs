@@ -63,9 +63,39 @@ namespace MyLinkToken.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap AllIn_48px {
+            get {
+                object obj = ResourceManager.GetObject("AllIn_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap backgroud {
             get {
                 object obj = ResourceManager.GetObject("backgroud", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Copy_48px {
+            get {
+                object obj = ResourceManager.GetObject("Copy_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Edit_Property_48px {
+            get {
+                object obj = ResourceManager.GetObject("Edit Property_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +126,16 @@ namespace MyLinkToken.Properties {
         internal static System.Drawing.Bitmap FormMsg_Warn {
             get {
                 object obj = ResourceManager.GetObject("FormMsg_Warn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap QR_Code_48px {
+            get {
+                object obj = ResourceManager.GetObject("QR Code_48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

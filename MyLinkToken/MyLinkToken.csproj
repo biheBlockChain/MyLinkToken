@@ -60,6 +60,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
     <Reference Include="iHomeSoft.Helper">
       <HintPath>..\..\..\..\..\iHomeSoft\develop\0libs\iHomeSoft.Helper.dll</HintPath>
     </Reference>
@@ -132,6 +135,18 @@
     <Compile Include="FormPassword.Designer.cs">
       <DependentUpon>FormPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormQRCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQRCode.Designer.cs">
+      <DependentUpon>FormQRCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRename.Designer.cs">
+      <DependentUpon>FormRename.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSend.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,7 +193,11 @@
     </Content>
     <Content Include="LinkClass\template.html" />
     <Content Include="logo_ico.ico" />
+    <None Include="Resources\Edit Property_48px.png" />
+    <None Include="Resources\QR Code_48px.png" />
     <None Include="Resources\backgroud.png" />
+    <None Include="Resources\Copy_48px.png" />
+    <None Include="Resources\AllIn_48px.png" />
     <Content Include="Resources\dialog-error-5.png" />
     <Content Include="Resources\dialog-information-4.png" />
     <Content Include="Resources\dialog-warning-3.png" />
@@ -194,6 +213,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPassword.resx">
       <DependentUpon>FormPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQRCode.resx">
+      <DependentUpon>FormQRCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRename.resx">
+      <DependentUpon>FormRename.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSend.resx">
       <DependentUpon>FormSend.cs</DependentUpon>
