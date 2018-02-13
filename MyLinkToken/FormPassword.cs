@@ -38,9 +38,6 @@ namespace MyLinkToken
                 EasyMsg.ShowTips("两次密码输入不一致！");
                 return;
             }
-            string address = KeyStoreEx.GenerateKeyStore(pwd1, Application.StartupPath + "\\KeyStore");
-            FormMain main = (FormMain)this.Owner;
-            main.AddNewAccount(address);
             this.Close();
         }
     }

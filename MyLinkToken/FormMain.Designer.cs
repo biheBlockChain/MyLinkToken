@@ -34,8 +34,9 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNew = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbRename = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnRename = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
@@ -59,8 +60,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtAddresSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lbRename = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -115,7 +114,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnNew);
             this.groupBox1.Controls.Add(this.listBoxAccount);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnImport);
@@ -127,16 +125,6 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "口袋管理：";
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(5, 343);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 35);
-            this.btnNew.TabIndex = 6;
-            this.btnNew.Text = "新建账户";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // groupBox2
             // 
@@ -162,6 +150,24 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "链克转赠";
+            // 
+            // lbRename
+            // 
+            this.lbRename.AutoSize = true;
+            this.lbRename.Location = new System.Drawing.Point(328, 23);
+            this.lbRename.Name = "lbRename";
+            this.lbRename.Size = new System.Drawing.Size(15, 15);
+            this.lbRename.TabIndex = 14;
+            this.lbRename.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(256, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 15);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "账户别名：";
             // 
             // btnRename
             // 
@@ -408,24 +414,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "链克地址：";
             // 
-            // lbRename
-            // 
-            this.lbRename.AutoSize = true;
-            this.lbRename.Location = new System.Drawing.Point(328, 23);
-            this.lbRename.Name = "lbRename";
-            this.lbRename.Size = new System.Drawing.Size(15, 15);
-            this.lbRename.TabIndex = 14;
-            this.lbRename.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(256, 23);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 15);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "账户别名：";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -473,7 +461,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

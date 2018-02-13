@@ -153,7 +153,6 @@
     <Compile Include="FormSend.Designer.cs">
       <DependentUpon>FormSend.cs</DependentUpon>
     </Compile>
-    <Compile Include="LinkClass\KeyStoreEx.cs" />
     <Compile Include="LinkClass\TransactionEx.cs" />
     <Compile Include="LinkClass\TransactionRecordsModel.cs" />
     <Compile Include="WinFormEx\FormSplash.cs">
@@ -191,7 +190,6 @@
     <Content Include="Doc\Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="LinkClass\template.html" />
     <Content Include="logo_ico.ico" />
     <None Include="Resources\Edit Property_48px.png" />
     <None Include="Resources\QR Code_48px.png" />
